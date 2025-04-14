@@ -44,7 +44,7 @@ public class PlayerDeck : MonoBehaviour
                 cardData.cardBack = false;
             }
 
-            hand.Add(cardDatabase.cardList[randomCard]);
+            hand.Add(cardData.actionCard);
         }
 
         for (int i = 0; i < 5; i ++)
