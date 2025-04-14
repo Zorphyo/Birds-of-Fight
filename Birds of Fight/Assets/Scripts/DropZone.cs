@@ -3,19 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+//When the card is dropped, if it is a valid place to drop the card, make that spot the card's new parent and set it's transform.
+public class DropZone : MonoBehaviour, IDropHandler //IPointerEnterHandler, IPointerExitHandler
 {
-    GameManager gameManager;
-
-    private void Awake()
-    {
-        gameManager = FindObjectOfType<GameManager>();
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
+    /*public void OnPointerEnter(PointerEventData eventData)
     {
 
-    }
+    }*/
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -25,8 +19,8 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    /*public void OnPointerExit(PointerEventData eventData)
     {
 
-    }
+    }*/
 }

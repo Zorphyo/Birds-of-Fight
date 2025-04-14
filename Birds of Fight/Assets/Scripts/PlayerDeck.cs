@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script that populates the hands for both the player and the opponent with cards that have scriptable objects tied to them
 public class PlayerDeck : MonoBehaviour
 {
     int randomCard;
@@ -9,7 +10,6 @@ public class PlayerDeck : MonoBehaviour
     public GameObject cardPrefab;
     public bool opponentHand;
     public RectTransform deckPanel;
-    public List<ActionCard> hand = new List<ActionCard>();
 
     CardDatabase cardDatabase;
     CursorControl cursorControl;
@@ -20,20 +20,14 @@ public class PlayerDeck : MonoBehaviour
         cardDatabase = FindObjectOfType<CardDatabase>();
 
         cursorControl = FindObjectOfType<CursorControl>();
-        cursorControl.LockCursor();
+        cursorControl.LockCursor(); //Lock mouse input until all cards are drawn
 
         StartCoroutine(DrawCards());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator DrawCards() //draws five cards of each attack type randomly, and flips the cards over if they are opponent cards
     {
-        
-    }
-
-    IEnumerator DrawCards()
-    {
-        for (int i = 0; i < 5; i ++)
+        for (int i = 0; i < 5; i ++) //Attack Cards
         {
             randomCard = Random.Range(0,3);
 
@@ -47,11 +41,9 @@ public class PlayerDeck : MonoBehaviour
             {
                 cardData.cardBack = false;
             }
-
-            hand.Add(cardData.actionCard);
         }
 
-        for (int i = 0; i < 5; i ++)
+        for (int i = 0; i < 5; i ++) //Throw Cards
         {
             randomCard = Random.Range(3,6);
 
@@ -65,11 +57,9 @@ public class PlayerDeck : MonoBehaviour
             {
                 cardData.cardBack = false;
             }
-
-            hand.Add(cardDatabase.cardList[randomCard]);
         }
 
-        for (int i = 0; i < 5; i ++)
+        for (int i = 0; i < 5; i ++) //Evade cards
         {
             randomCard = Random.Range(7,10);
 
@@ -83,10 +73,8 @@ public class PlayerDeck : MonoBehaviour
             {
                 cardData.cardBack = false;
             }
-
-            hand.Add(cardDatabase.cardList[randomCard]);
         }
 
-        cursorControl.UnlockCursor();
+        cursorControl.UnlockCursor(); //After cards have been drawn, the player can play the game
     }
 }

@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This is where all the game operations happen
 public class GameManager : MonoBehaviour
 {
     public GameObject opponentHand;
@@ -25,14 +26,14 @@ public class GameManager : MonoBehaviour
         cursorControl = GetComponent<CursorControl>();
     }
 
-    public DisplayCard GetPlayerCard()
+    public DisplayCard GetPlayerCard() //gets the card the player recently played for this round
     {
         DisplayCard card = playerSelectedCard.transform.GetChild(0).GetComponent<DisplayCard>();
 
         return card;
     }
 
-    public DisplayCard GetOpponentCard()
+    public DisplayCard GetOpponentCard() //gets a random card from the opponent for them to play this round
     {
         int random = Random.Range(0, opponentHand.transform.childCount);
         Transform card = opponentHand.transform.GetChild(random);
@@ -43,11 +44,11 @@ public class GameManager : MonoBehaviour
         return cardData;
     }
 
-    public void CompareCards(DisplayCard playerCard, DisplayCard opponentCard)
+    public void CompareCards(DisplayCard playerCard, DisplayCard opponentCard) //logic to see who won the round based on the cards played. Follow up actions will occur as necessary
     {
-        if (playerCard.actionCard.moveType == opponentCard.actionCard.moveType)
+        if (playerCard.actionCard.moveType == opponentCard.actionCard.moveType) //Tie 1
         {
-            if (playerCard.actionCard.bodyPart == opponentCard.actionCard.bodyPart)
+            if (playerCard.actionCard.bodyPart == opponentCard.actionCard.bodyPart) //Tie 2
             {
                 StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
                 Tie();
@@ -55,23 +56,25 @@ public class GameManager : MonoBehaviour
 
             else if ((playerCard.actionCard.bodyPart == "Talon" && opponentCard.actionCard.bodyPart == "Wing") || (playerCard.actionCard.bodyPart == "Wing" && opponentCard.actionCard.bodyPart == "Beak") || (playerCard.actionCard.bodyPart == "Beak" && opponentCard.actionCard.bodyPart == "Talon"))
             {
-                StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
+                StartCoroutine(RemoveActiveCards(playerCard, opponentCard)); //Player won based on body parts
                 PlayerWonRound();
             }
 
             else
             {
-                StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
+                StartCoroutine(RemoveActiveCards(playerCard, opponentCard)); //Player lost based on body parts
                 PlayerLostRound();
             }
         }
 
+        //Player won based on attack type
         else if ((playerCard.actionCard.moveType == "Attack" && opponentCard.actionCard.moveType == "Throw") || (playerCard.actionCard.moveType == "Throw" && opponentCard.actionCard.moveType == "Evade") || (playerCard.actionCard.moveType == "Evade" && opponentCard.actionCard.moveType == "Attack"))
         {
             StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
             PlayerWonRound();
         }
 
+        //Player lost based on attack type
         else 
         {
             StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
@@ -79,28 +82,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Tie()
+    void Tie() //Round is a tie, both players discard played card
     {
         Debug.Log("Tie");
         tie = true;
         cursorControl.UnlockCursor();
     }
 
-    void PlayerWonRound()
+    void PlayerWonRound() //Player won the round, the opponent discards an extra card at random
     {
         Debug.Log("Player Wins!");
         playerWonRound = true;
         StartCoroutine(OpponentDiscard());
     }
 
-    void PlayerLostRound()
+    void PlayerLostRound() //Player lost the round, they must choose an extra card to discard
     {
         Debug.Log("Player Loses!");
         playerLostRound = true;
         cursorControl.UnlockCursor();
     }
 
-    IEnumerator RemoveActiveCards(DisplayCard playerCard, DisplayCard opponentCard)
+    IEnumerator RemoveActiveCards(DisplayCard playerCard, DisplayCard opponentCard) //Removes the cards that were played by the player and opponent for that round after the winner is decided
     {
         cursorControl.LockCursor();
 
@@ -114,7 +117,7 @@ public class GameManager : MonoBehaviour
         CheckForWinner();
     }
 
-    IEnumerator OpponentDiscard()
+    IEnumerator OpponentDiscard() //Logic for removing a random card from the opponent
     {
         yield return new WaitForSeconds(2);
 
@@ -126,9 +129,9 @@ public class GameManager : MonoBehaviour
         CheckForWinner();
     }
 
-    public void CheckForWinner()
+    public void CheckForWinner() //Function that checks to see if either player has run out of cards, meaning they lost the game, and pulls up the results screen if a winner is decided
     {
-        if (opponentHand.transform.childCount == 0 && playerHand.transform.childCount == 0)
+        if (opponentHand.transform.childCount == 0 && playerHand.transform.childCount == 0) //Player and opponent reached zero cards at the same time
         {
             if (tie)
             {
@@ -148,19 +151,19 @@ public class GameManager : MonoBehaviour
             resultsScreen.SetActive(true);
         }
 
-        else if (opponentHand.transform.childCount == 0)
+        else if (opponentHand.transform.childCount == 0) //Opponent lost
         {
             resultText.SetText("You Win!!");
             resultsScreen.SetActive(true);
         }
 
-        else if (playerHand.transform.childCount == 0)
+        else if (playerHand.transform.childCount == 0) //Player lost
         {
             resultText.SetText("You Lose...");
             resultsScreen.SetActive(true);
         }
 
-        else if (playerLostGame)
+        else if (playerLostGame) //Player lost after discarding their last card
         {
             resultText.SetText("You Lose...");
             resultsScreen.SetActive(true);
