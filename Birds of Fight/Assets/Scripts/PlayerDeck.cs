@@ -35,7 +35,7 @@ public class PlayerDeck : MonoBehaviour
     {
         for (int i = 0; i < 5; i ++)
         {
-            randomCard = Random.Range(0,2);
+            randomCard = Random.Range(0,3);
 
             yield return new WaitForSeconds(0.25f);
 
@@ -53,7 +53,7 @@ public class PlayerDeck : MonoBehaviour
 
         for (int i = 0; i < 5; i ++)
         {
-            randomCard = Random.Range(3,5);
+            randomCard = Random.Range(3,6);
 
             yield return new WaitForSeconds(0.25f);
 
@@ -71,7 +71,7 @@ public class PlayerDeck : MonoBehaviour
 
         for (int i = 0; i < 5; i ++)
         {
-            randomCard = Random.Range(8,10);
+            randomCard = Random.Range(7,10);
 
             yield return new WaitForSeconds(0.25f);
 

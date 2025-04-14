@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,9 +11,14 @@ public class GameManager : MonoBehaviour
     public GameObject playerHand;
     public GameObject opponentSelectedCard;
     public GameObject playerSelectedCard;
+    public TextMeshProUGUI resultText;
+    public GameObject resultsScreen;
     CursorControl cursorControl;
 
     public static bool playerLostRound = false;
+    public static bool playerWonRound = false;
+    public static bool tie = false;
+    public static bool playerLostGame = false;
 
     private void Awake()
     {
@@ -76,20 +82,22 @@ public class GameManager : MonoBehaviour
     void Tie()
     {
         Debug.Log("Tie");
+        tie = true;
         cursorControl.UnlockCursor();
     }
 
     void PlayerWonRound()
     {
         Debug.Log("Player Wins!");
+        playerWonRound = true;
         StartCoroutine(OpponentDiscard());
     }
 
     void PlayerLostRound()
     {
         Debug.Log("Player Loses!");
+        playerLostRound = true;
         cursorControl.UnlockCursor();
-        PlayerDiscard();
     }
 
     IEnumerator RemoveActiveCards(DisplayCard playerCard, DisplayCard opponentCard)
@@ -100,6 +108,10 @@ public class GameManager : MonoBehaviour
 
         Destroy(playerCard.gameObject);
         Destroy(opponentCard.gameObject);
+
+        yield return new WaitForSeconds(2);
+
+        CheckForWinner();
     }
 
     IEnumerator OpponentDiscard()
@@ -111,11 +123,47 @@ public class GameManager : MonoBehaviour
         Destroy(card.gameObject);
 
         cursorControl.UnlockCursor();
+        CheckForWinner();
     }
 
-    public void PlayerDiscard()
+    public void CheckForWinner()
     {
-        playerLostRound = true;
-        print(playerLostRound);
+        if (opponentHand.transform.childCount == 0 && playerHand.transform.childCount == 0)
+        {
+            if (tie)
+            {
+                resultText.SetText("It's a tie!");
+            }
+
+            else if (playerWonRound)
+            {
+                resultText.SetText("You Win!!");
+            }
+
+            else if (playerLostRound)
+            {
+                resultText.SetText("You Lose...");
+            }
+
+            resultsScreen.SetActive(true);
+        }
+
+        else if (opponentHand.transform.childCount == 0)
+        {
+            resultText.SetText("You Win!!");
+            resultsScreen.SetActive(true);
+        }
+
+        else if (playerHand.transform.childCount == 0)
+        {
+            resultText.SetText("You Lose...");
+            resultsScreen.SetActive(true);
+        }
+
+        else if (playerLostGame)
+        {
+            resultText.SetText("You Lose...");
+            resultsScreen.SetActive(true);
+        }
     }
 }

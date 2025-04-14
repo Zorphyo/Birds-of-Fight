@@ -50,8 +50,14 @@ public class DragCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         if (GameManager.playerLostRound == true)
         {
+            if (gameManager.playerHand.transform.childCount == 1)
+            {
+                GameManager.playerLostGame = true;
+                gameManager.CheckForWinner();
+            }
+            
             GameManager.playerLostRound = false;
-            print(GameManager.playerLostRound);
+            
             Destroy(this.gameObject);
         }
     }
