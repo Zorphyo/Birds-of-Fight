@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opponentHand: {fileID: 1539120879}
+  playerHand: {fileID: 1413830496}
   opponentSelectedCard: {fileID: 725569023}
   playerSelectedCard: {fileID: 698553540}
 --- !u!4 &1143615993

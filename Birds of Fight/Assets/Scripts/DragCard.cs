@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
     RectTransform rectTransform;
     Canvas canvas;
@@ -43,6 +43,16 @@ public class DragCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             DisplayCard opponentCard = gameManager.GetOpponentCard();
             DisplayCard playerCard = gameManager.GetPlayerCard();
             gameManager.CompareCards(playerCard, opponentCard);
+        }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (GameManager.playerLostRound == true)
+        {
+            GameManager.playerLostRound = false;
+            print(GameManager.playerLostRound);
+            Destroy(this.gameObject);
         }
     }
 }

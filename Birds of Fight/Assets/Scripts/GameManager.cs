@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject opponentHand;
+    public GameObject playerHand;
     public GameObject opponentSelectedCard;
     public GameObject playerSelectedCard;
     CursorControl cursorControl;
@@ -88,6 +89,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Player Loses!");
         cursorControl.UnlockCursor();
+        PlayerDiscard();
     }
 
     IEnumerator RemoveActiveCards(DisplayCard playerCard, DisplayCard opponentCard)
@@ -111,4 +113,9 @@ public class GameManager : MonoBehaviour
         cursorControl.UnlockCursor();
     }
 
+    public void PlayerDiscard()
+    {
+        playerLostRound = true;
+        print(playerLostRound);
+    }
 }
