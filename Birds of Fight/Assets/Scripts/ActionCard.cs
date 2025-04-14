@@ -11,10 +11,4 @@ public class ActionCard : ScriptableObject
     public string moveType;
     public string bodyPart;
     public Sprite cardImage;
-
-    public ActionCard()
-    {
-
-    }
-
 }
