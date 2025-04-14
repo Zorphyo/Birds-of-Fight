@@ -12,11 +12,15 @@ public class PlayerDeck : MonoBehaviour
     public List<ActionCard> hand = new List<ActionCard>();
 
     CardDatabase cardDatabase;
+    CursorControl cursorControl;
 
     // Start is called before the first frame update
     void Start()
     {
         cardDatabase = FindObjectOfType<CardDatabase>();
+
+        cursorControl = FindObjectOfType<CursorControl>();
+        cursorControl.LockCursor();
 
         StartCoroutine(DrawCards());
     }
@@ -29,7 +33,7 @@ public class PlayerDeck : MonoBehaviour
 
     IEnumerator DrawCards()
     {
-         for (int i = 0; i < 5; i ++)
+        for (int i = 0; i < 5; i ++)
         {
             randomCard = Random.Range(0,2);
 
@@ -82,5 +86,7 @@ public class PlayerDeck : MonoBehaviour
 
             hand.Add(cardDatabase.cardList[randomCard]);
         }
+
+        cursorControl.UnlockCursor();
     }
 }
