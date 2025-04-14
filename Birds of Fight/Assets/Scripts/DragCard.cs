@@ -42,7 +42,7 @@ public class DragCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             DisplayCard opponentCard = gameManager.GetOpponentCard();
             DisplayCard playerCard = gameManager.GetPlayerCard();
-            gameManager.CompareCards(playerCard.actionCard, opponentCard.actionCard);
+            gameManager.CompareCards(playerCard, opponentCard);
         }
     }
 }
