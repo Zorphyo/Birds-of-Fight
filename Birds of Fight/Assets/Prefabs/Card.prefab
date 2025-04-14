@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c526cd5e53a38948aa05e033a189ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  parentToReturnTo: {fileID: 0}
 --- !u!225 &8450224613239010067
 CanvasGroup:
   m_ObjectHideFlags: 0

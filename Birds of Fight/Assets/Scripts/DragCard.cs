@@ -8,6 +8,8 @@ public class DragCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     RectTransform rectTransform;
     Canvas canvas;
     CanvasGroup canvasGroup;
+    GameManager gameManager;
+    GameObject playerSelectedCard;
     public Transform parentToReturnTo = null;
 
     private void Awake()
@@ -15,6 +17,8 @@ public class DragCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         rectTransform = GetComponent<RectTransform>();
         canvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
+        gameManager = FindObjectOfType<GameManager>();
+        playerSelectedCard = gameManager.playerSelectedCard;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -33,5 +37,12 @@ public class DragCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         this.transform.SetParent(parentToReturnTo);
         canvasGroup.blocksRaycasts = true;
+
+        if (parentToReturnTo == playerSelectedCard.transform)
+        {
+            DisplayCard opponentCard = gameManager.GetOpponentCard();
+            DisplayCard playerCard = gameManager.GetPlayerCard();
+            gameManager.CompareCards(playerCard.actionCard, opponentCard.actionCard);
+        }
     }
 }

@@ -5,39 +5,71 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public bool isPlayerTurn;
-    public int playerTurn;
-    public int opponentTurn;
+    public GameObject opponentHand;
+    public GameObject opponentSelectedCard;
+    public GameObject playerSelectedCard;
 
-    public static bool startPlayerTurn;
-
-    // Start is called before the first frame update
-    void Start()
+    public DisplayCard GetPlayerCard()
     {
-        isPlayerTurn = true;
-        playerTurn = 1;
-        opponentTurn = 0;
+        DisplayCard card = playerSelectedCard.transform.GetChild(0).GetComponent<DisplayCard>();
 
-        startPlayerTurn = false;
+        return card;
     }
 
-    // Update is called once per frame
-    void Update()
+    public DisplayCard GetOpponentCard()
     {
-        
+        int random = Random.Range(0, opponentHand.transform.childCount);
+        Transform card = opponentHand.transform.GetChild(random);
+        card.SetParent(opponentSelectedCard.transform);
+        DisplayCard cardData = card.gameObject.GetComponent<DisplayCard>();
+        cardData.cardBack = false;
+
+        return cardData;
     }
 
-    public void OpponentPlaysCard()
+    public void CompareCards(ActionCard playerCard, ActionCard opponentCard)
     {
-        isPlayerTurn = false;
-        playerTurn = 0;
-        opponentTurn = 1;
+        if (playerCard.moveType == opponentCard.moveType)
+        {
+            if (playerCard.bodyPart == opponentCard.bodyPart)
+            {
+                Tie();
+            }
+
+            else if ((playerCard.bodyPart == "Talon" && opponentCard.bodyPart == "Wing") || (playerCard.bodyPart == "Wing" && opponentCard.bodyPart == "Beak") || (playerCard.bodyPart == "Beak" && opponentCard.bodyPart == "Talon"))
+            {
+                PlayerWonRound();
+            }
+
+            else
+            {
+                PlayerLostRound();
+            }
+        }
+
+        else if ((playerCard.moveType == "Attack" && opponentCard.moveType == "Throw") || (playerCard.moveType == "Throw" && opponentCard.moveType == "Evade") || (playerCard.moveType == "Evade" && opponentCard.moveType == "Attack"))
+        {
+            PlayerWonRound();
+        }
+
+        else 
+        {
+            PlayerLostRound();
+        }
     }
 
-    public void PlayerPlaysCard()
+    void Tie()
     {
-        isPlayerTurn = true;
-        playerTurn = 1;
-        opponentTurn = 0;
+        Debug.Log("Tie");
+    }
+
+    void PlayerWonRound()
+    {
+        Debug.Log("Player Wins!");
+    }
+
+    void PlayerLostRound()
+    {
+        Debug.Log("Player Loses!");
     }
 }
