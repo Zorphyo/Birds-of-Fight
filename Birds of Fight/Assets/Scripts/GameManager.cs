@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerSelectedCard;
     CursorControl cursorControl;
 
+    public static bool playerLostRound = false;
+
     private void Awake()
     {
         cursorControl = GetComponent<CursorControl>();
@@ -40,49 +42,52 @@ public class GameManager : MonoBehaviour
         {
             if (playerCard.actionCard.bodyPart == opponentCard.actionCard.bodyPart)
             {
-                Tie();
                 StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
+                Tie();
             }
 
             else if ((playerCard.actionCard.bodyPart == "Talon" && opponentCard.actionCard.bodyPart == "Wing") || (playerCard.actionCard.bodyPart == "Wing" && opponentCard.actionCard.bodyPart == "Beak") || (playerCard.actionCard.bodyPart == "Beak" && opponentCard.actionCard.bodyPart == "Talon"))
             {
-                PlayerWonRound();
                 StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
+                PlayerWonRound();
             }
 
             else
             {
-                PlayerLostRound();
                 StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
+                PlayerLostRound();
             }
         }
 
         else if ((playerCard.actionCard.moveType == "Attack" && opponentCard.actionCard.moveType == "Throw") || (playerCard.actionCard.moveType == "Throw" && opponentCard.actionCard.moveType == "Evade") || (playerCard.actionCard.moveType == "Evade" && opponentCard.actionCard.moveType == "Attack"))
         {
-            PlayerWonRound();
             StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
+            PlayerWonRound();
         }
 
         else 
         {
-            PlayerLostRound();
             StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
+            PlayerLostRound();
         }
     }
 
     void Tie()
     {
         Debug.Log("Tie");
+        cursorControl.UnlockCursor();
     }
 
     void PlayerWonRound()
     {
         Debug.Log("Player Wins!");
+        StartCoroutine(OpponentDiscard());
     }
 
     void PlayerLostRound()
     {
         Debug.Log("Player Loses!");
+        cursorControl.UnlockCursor();
     }
 
     IEnumerator RemoveActiveCards(DisplayCard playerCard, DisplayCard opponentCard)
@@ -93,7 +98,17 @@ public class GameManager : MonoBehaviour
 
         Destroy(playerCard.gameObject);
         Destroy(opponentCard.gameObject);
+    }
+
+    IEnumerator OpponentDiscard()
+    {
+        yield return new WaitForSeconds(2);
+
+        int random = Random.Range(0, opponentHand.transform.childCount);
+        Transform card = opponentHand.transform.GetChild(random);
+        Destroy(card.gameObject);
 
         cursorControl.UnlockCursor();
     }
+
 }
