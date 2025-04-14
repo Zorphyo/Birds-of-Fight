@@ -385,6 +385,8 @@
 "Assets/Scripts/DragCard.cs"
 "Assets/Scripts/DropZone.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/LoadScenes.cs"
+"Assets/Scripts/MainMenuHandler.cs"
 "Assets/Scripts/PlayerDeck.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
