@@ -16,4 +16,4 @@ MonoBehaviour:
   cardDescription: Throw with your wing!
   attackType: 2
   bodyPart: 2
-  cardImage: {fileID: 21300000, guid: 10d63c624f99e6d42b222fd449b3e038, type: 3}
+  cardImage: {fileID: 1960718394, guid: 766d1a49e0c1adc4894e9e01b359a3ad, type: 3}

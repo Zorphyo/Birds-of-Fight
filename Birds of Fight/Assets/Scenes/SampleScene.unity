@@ -1373,7 +1373,6 @@ MonoBehaviour:
   cardPrefab: {fileID: 2097233729686861870, guid: 852d877c37da8df47a375c4599c5b2c1, type: 3}
   opponentHand: 0
   deckPanel: {fileID: 1413830497}
-  hand: []
 --- !u!114 &1413830502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,7 +1439,6 @@ MonoBehaviour:
   cardPrefab: {fileID: 2097233729686861870, guid: 852d877c37da8df47a375c4599c5b2c1, type: 3}
   opponentHand: 1
   deckPanel: {fileID: 1539120880}
-  hand: []
 --- !u!114 &1539120882
 MonoBehaviour:
   m_ObjectHideFlags: 0

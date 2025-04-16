@@ -16,4 +16,4 @@ MonoBehaviour:
   cardDescription: Throw with your talons!
   attackType: 2
   bodyPart: 1
-  cardImage: {fileID: 21300000, guid: 428ddfb9450d7604cb707d022b72936c, type: 3}
+  cardImage: {fileID: -1563578014, guid: 766d1a49e0c1adc4894e9e01b359a3ad, type: 3}

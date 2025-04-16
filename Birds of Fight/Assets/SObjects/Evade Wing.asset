@@ -16,4 +16,4 @@ MonoBehaviour:
   cardDescription: Evade with your wings!
   attackType: 3
   bodyPart: 2
-  cardImage: {fileID: 21300000, guid: 4aab6a7044beab34287ecf06494ab333, type: 3}
+  cardImage: {fileID: -434148910, guid: 766d1a49e0c1adc4894e9e01b359a3ad, type: 3}

@@ -16,4 +16,4 @@ MonoBehaviour:
   cardDescription: Attack with your wings!
   attackType: 1
   bodyPart: 2
-  cardImage: {fileID: 21300000, guid: 8fe2b0c9fed6b0c41a2ff38bfcc21c9c, type: 3}
+  cardImage: {fileID: -697831682, guid: 766d1a49e0c1adc4894e9e01b359a3ad, type: 3}

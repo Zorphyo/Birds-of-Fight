@@ -16,4 +16,4 @@ MonoBehaviour:
   cardDescription: Evade with your talons!
   attackType: 3
   bodyPart: 1
-  cardImage: {fileID: 21300000, guid: 610e6022d261e7f4ea469844862d3ec2, type: 3}
+  cardImage: {fileID: -191650031, guid: 766d1a49e0c1adc4894e9e01b359a3ad, type: 3}
