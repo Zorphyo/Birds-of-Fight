@@ -39,7 +39,7 @@ public class PlayerDeck : MonoBehaviour
 
             if (!opponentHand)
             {
-                cardData.cardBack = false;
+                cardData.FlipCard();
             }
         }
 
@@ -55,7 +55,7 @@ public class PlayerDeck : MonoBehaviour
 
             if (!opponentHand)
             {
-                cardData.cardBack = false;
+                cardData.FlipCard();
             }
         }
 
@@ -71,7 +71,7 @@ public class PlayerDeck : MonoBehaviour
 
             if (!opponentHand)
             {
-                cardData.cardBack = false;
+                cardData.FlipCard();
             }
         }
 

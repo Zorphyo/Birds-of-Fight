@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         Transform card = opponentHand.transform.GetChild(random);
         card.SetParent(opponentSelectedCard.transform);
         DisplayCard cardData = card.gameObject.GetComponent<DisplayCard>();
-        cardData.cardBack = false;
+        cardData.FlipCard();
 
         return cardData;
     }

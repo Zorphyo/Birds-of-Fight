@@ -14,8 +14,8 @@ public class DisplayCard : MonoBehaviour
     public TextMeshProUGUI descriptionText;
     public UnityEngine.UI.Image cardImage;
 
-    public bool cardBack;
-    public static bool staticCardBack;
+    public bool isFlipped = false;
+    public GameObject cardBack;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +25,16 @@ public class DisplayCard : MonoBehaviour
         cardImage.sprite = actionCard.cardImage;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FlipCard()
     {
-        staticCardBack = cardBack; //Showing back of card or not
+        if (cardBack.activeSelf)
+        {
+            cardBack.SetActive(false);
+        }
+
+        else 
+        {
+            cardBack.SetActive(true);
+        }
     }
 }
