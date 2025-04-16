@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerSelectedCard;
     public TextMeshProUGUI resultText;
     public GameObject resultsScreen;
+    public TextMeshProUGUI instructionsText;
+    public TextMeshProUGUI discardText;
     CursorControl cursorControl;
 
     public static bool playerLostRound = false;
@@ -88,23 +90,22 @@ public class GameManager : MonoBehaviour
 
     void Tie() //Round is a tie, both players discard played card
     {
-        Debug.Log("Tie");
+        instructionsText.SetText("Tie!");
         tie = true;
-        cursorControl.UnlockCursor();
     }
 
     void PlayerWonRound() //Player won the round, the opponent discards an extra card at random
     {
-        Debug.Log("Player Wins!");
+        instructionsText.SetText("Player Wins!");
         playerWonRound = true;
         StartCoroutine(OpponentDiscard());
     }
 
     void PlayerLostRound() //Player lost the round, they must choose an extra card to discard
     {
-        Debug.Log("Player Loses!");
+        instructionsText.SetText("Player Loses!");
         playerLostRound = true;
-        cursorControl.UnlockCursor();
+        discardText.gameObject.SetActive(true);
     }
 
     IEnumerator RemoveActiveCards(DisplayCard playerCard, DisplayCard opponentCard) //Removes the cards that were played by the player and opponent for that round after the winner is decided
@@ -116,8 +117,10 @@ public class GameManager : MonoBehaviour
         Destroy(playerCard.gameObject);
         Destroy(opponentCard.gameObject);
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
+        instructionsText.SetText("Select Your Card");
+        cursorControl.UnlockCursor();
         CheckForWinner();
     }
 

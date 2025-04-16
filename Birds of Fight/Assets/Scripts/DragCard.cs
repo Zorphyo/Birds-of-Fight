@@ -58,6 +58,7 @@ public class DragCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             }
             
             GameManager.playerLostRound = false;
+            gameManager.discardText.gameObject.SetActive(false);
             
             Destroy(this.gameObject);
         }

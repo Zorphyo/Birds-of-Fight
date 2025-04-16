@@ -11,12 +11,15 @@ public class PlayerDeck : MonoBehaviour
     public bool opponentHand;
     public RectTransform deckPanel;
 
+    GameManager gameManager;
     CardDatabase cardDatabase;
     CursorControl cursorControl;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+
         cardDatabase = FindObjectOfType<CardDatabase>();
 
         cursorControl = FindObjectOfType<CursorControl>();
@@ -75,6 +78,9 @@ public class PlayerDeck : MonoBehaviour
             }
         }
 
+        yield return new WaitForSeconds(0.5f);
+
+        gameManager.instructionsText.SetText("Select Your Card");
         cursorControl.UnlockCursor(); //After cards have been drawn, the player can play the game
     }
 }
