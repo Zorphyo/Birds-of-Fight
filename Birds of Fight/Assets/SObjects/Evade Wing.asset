@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Evade Wing
   cardDescription: Evade with your wings!
-  moveType: Evade
-  bodyPart: Wing
+  attackType: 3
+  bodyPart: 2
   cardImage: {fileID: 21300000, guid: 4aab6a7044beab34287ecf06494ab333, type: 3}

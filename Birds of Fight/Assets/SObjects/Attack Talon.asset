@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Attack Talon
   cardDescription: Attack with your talons!
-  moveType: Attack
-  bodyPart: Talon
+  attackType: 1
+  bodyPart: 1
   cardImage: {fileID: 21300000, guid: 09123cbdc0ada8743be4512bc89701f2, type: 3}

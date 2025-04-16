@@ -8,9 +8,23 @@ using UnityEngine.Timeline;
 [CreateAssetMenu(fileName = "New Card", menuName = "Action Card")]
 public class ActionCard : ScriptableObject
 {
+    public enum AttackType
+    {
+        Attack = 1,
+        Throw,
+        Evade
+    };
+
+    public enum BodyPart 
+    {
+        Talon = 1,
+        Wing,
+        Beak
+    };
+
     public string cardName;
     public string cardDescription;
-    public string moveType;
-    public string bodyPart;
+    public AttackType attackType;
+    public BodyPart bodyPart;
     public Sprite cardImage;
 }

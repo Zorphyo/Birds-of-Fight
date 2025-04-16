@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void CompareCards(DisplayCard playerCard, DisplayCard opponentCard) //logic to see who won the round based on the cards played. Follow up actions will occur as necessary
     {
-        if (playerCard.actionCard.moveType == opponentCard.actionCard.moveType) //Tie 1
+        if (playerCard.actionCard.attackType == opponentCard.actionCard.attackType) //Tie 1
         {
             if (playerCard.actionCard.bodyPart == opponentCard.actionCard.bodyPart) //Tie 2
             {
@@ -54,7 +54,9 @@ public class GameManager : MonoBehaviour
                 Tie();
             }
 
-            else if ((playerCard.actionCard.bodyPart == "Talon" && opponentCard.actionCard.bodyPart == "Wing") || (playerCard.actionCard.bodyPart == "Wing" && opponentCard.actionCard.bodyPart == "Beak") || (playerCard.actionCard.bodyPart == "Beak" && opponentCard.actionCard.bodyPart == "Talon"))
+            else if ((playerCard.actionCard.bodyPart == ActionCard.BodyPart.Talon && opponentCard.actionCard.bodyPart == ActionCard.BodyPart.Wing) || 
+            (playerCard.actionCard.bodyPart == ActionCard.BodyPart.Wing && opponentCard.actionCard.bodyPart == ActionCard.BodyPart.Beak) || 
+            (playerCard.actionCard.bodyPart == ActionCard.BodyPart.Beak && opponentCard.actionCard.bodyPart == ActionCard.BodyPart.Talon))
             {
                 StartCoroutine(RemoveActiveCards(playerCard, opponentCard)); //Player won based on body parts
                 PlayerWonRound();
@@ -68,7 +70,9 @@ public class GameManager : MonoBehaviour
         }
 
         //Player won based on attack type
-        else if ((playerCard.actionCard.moveType == "Attack" && opponentCard.actionCard.moveType == "Throw") || (playerCard.actionCard.moveType == "Throw" && opponentCard.actionCard.moveType == "Evade") || (playerCard.actionCard.moveType == "Evade" && opponentCard.actionCard.moveType == "Attack"))
+        else if ((playerCard.actionCard.attackType == ActionCard.AttackType.Attack && opponentCard.actionCard.attackType == ActionCard.AttackType.Throw) || 
+        (playerCard.actionCard.attackType == ActionCard.AttackType.Throw && opponentCard.actionCard.attackType == ActionCard.AttackType.Evade) || 
+        (playerCard.actionCard.attackType == ActionCard.AttackType.Evade && opponentCard.actionCard.attackType == ActionCard.AttackType.Attack))
         {
             StartCoroutine(RemoveActiveCards(playerCard, opponentCard));
             PlayerWonRound();
@@ -121,9 +125,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        int random = Random.Range(0, opponentHand.transform.childCount);
-        Transform card = opponentHand.transform.GetChild(random);
-        Destroy(card.gameObject);
+        if (opponentHand.transform.childCount != 0)
+        {
+            int random = Random.Range(0, opponentHand.transform.childCount);
+            Transform card = opponentHand.transform.GetChild(random);
+            Destroy(card.gameObject);
+        }
 
         cursorControl.UnlockCursor();
         CheckForWinner();
