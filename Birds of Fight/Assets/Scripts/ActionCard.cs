@@ -12,7 +12,8 @@ public class ActionCard : ScriptableObject
     {
         Attack = 1,
         Throw,
-        Evade
+        Evade,
+        Special
     };
 
     public enum BodyPart 

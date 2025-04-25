@@ -8,6 +8,8 @@ using UnityEngine.UI;
 //This is where all the game operations happen
 public class GameManager : MonoBehaviour
 {
+    public CharacterCard playerCharacter;
+    public CharacterCard opponentCharacter;
     public GameObject opponentHand;
     public GameObject playerHand;
     public GameObject opponentSelectedCard;
@@ -48,6 +50,16 @@ public class GameManager : MonoBehaviour
 
     public void CompareCards(DisplayCard playerCard, DisplayCard opponentCard) //logic to see who won the round based on the cards played. Follow up actions will occur as necessary
     {
+        if (playerCard.actionCard.attackType == ActionCard.AttackType.Special)
+        {
+            playerCard.actionCard = playerCharacter.specialCardProperties;
+        }
+
+        if (opponentCard.actionCard.attackType == ActionCard.AttackType.Special)
+        {
+            opponentCard.actionCard = opponentCharacter.specialCardProperties;
+        }
+        
         if (playerCard.actionCard.attackType == opponentCard.actionCard.attackType) //Tie 1
         {
             if (playerCard.actionCard.bodyPart == opponentCard.actionCard.bodyPart) //Tie 2
