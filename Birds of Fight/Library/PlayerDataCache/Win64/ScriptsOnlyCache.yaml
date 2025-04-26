@@ -110,6 +110,9 @@ ScriptsOnlyBuild:
     methodName: LoadGame
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuHandler
+    methodName: QuitGame
+  - assembly: Assembly-CSharp
+    fullTypeName: MainMenuHandler
     methodName: RemoveInstructions
   - assembly: Assembly-CSharp
     fullTypeName: MainMenuHandler
