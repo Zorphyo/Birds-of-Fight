@@ -17,3 +17,4 @@ MonoBehaviour:
   evadeCardCount: 5
   specialCardCount: 1
   specialCardProperties: {fileID: 11400000, guid: b7c923919f7c08a47bcc4946bb162262, type: 2}
+  cardImage: {fileID: 21300000, guid: c53ba1c86760f3544b2b126f365c23e9, type: 3}

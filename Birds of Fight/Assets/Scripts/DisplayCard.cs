@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 //Script that shows how a Card in the game is displayed. It gets all of its information from the Action Card Scriptable Object associated with it.
 public class DisplayCard : MonoBehaviour

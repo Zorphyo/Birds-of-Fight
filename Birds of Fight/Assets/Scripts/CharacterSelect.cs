@@ -10,6 +10,9 @@ public class CharacterSelect : MonoBehaviour
     public GameObject playerHand;
     public GameObject opponentHand;
 
+    public UnityEngine.UI.Image playerCharacterCard;
+    public UnityEngine.UI.Image opponentCharacterCard;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,9 @@ public class CharacterSelect : MonoBehaviour
     {
         gameManager.playerCharacter = cardDatabase.characterList[0];
         RandomOpponent();
+
+        playerCharacterCard.sprite = gameManager.playerCharacter.cardImage;
+        opponentCharacterCard.sprite = gameManager.opponentCharacter.cardImage;
 
         PlayerDeck playerDeck = playerHand.GetComponent<PlayerDeck>();
         PlayerDeck opponentDeck = opponentHand.GetComponent<PlayerDeck>();
@@ -36,6 +42,9 @@ public class CharacterSelect : MonoBehaviour
     {
         gameManager.playerCharacter = cardDatabase.characterList[1];
         RandomOpponent();
+
+        playerCharacterCard.sprite = gameManager.playerCharacter.cardImage;
+        opponentCharacterCard.sprite = gameManager.opponentCharacter.cardImage;
 
         PlayerDeck playerDeck = playerHand.GetComponent<PlayerDeck>();
         PlayerDeck opponentDeck = opponentHand.GetComponent<PlayerDeck>();

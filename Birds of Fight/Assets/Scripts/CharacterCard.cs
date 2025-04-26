@@ -11,4 +11,5 @@ public class CharacterCard : ScriptableObject
     public int specialCardCount;
     
     public ActionCard specialCardProperties;
+    public Sprite cardImage;
 }
