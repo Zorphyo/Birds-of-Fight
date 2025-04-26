@@ -28,6 +28,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         cursorControl = GetComponent<CursorControl>();
+        ResetGame();
+    }
+
+    public void ResetGame()
+    {
+        playerLostRound = false;
+        playerWonRound = false;
+        tie = false;
+        playerLostGame = false;
     }
 
     public DisplayCard GetPlayerCard() //gets the card the player recently played for this round
