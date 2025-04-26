@@ -10,6 +10,7 @@ public class PlayerDeck : MonoBehaviour
     public GameObject cardPrefab;
     public bool opponentHand;
     public RectTransform deckPanel;
+    public List<ActionCard> actionCards = new List<ActionCard>();
 
     GameManager gameManager;
     CardDatabase cardDatabase;
@@ -37,6 +38,7 @@ public class PlayerDeck : MonoBehaviour
             GameObject newCard = Instantiate(cardPrefab, deckPanel);
             DisplayCard cardData = newCard.GetComponent<DisplayCard>();
             cardData.actionCard = cardDatabase.cardList[randomCard];
+            actionCards.Add(cardDatabase.cardList[randomCard]);
 
             if (!opponentHand)
             {
@@ -53,6 +55,7 @@ public class PlayerDeck : MonoBehaviour
             GameObject newCard = Instantiate(cardPrefab, deckPanel);
             DisplayCard cardData = newCard.GetComponent<DisplayCard>();
             cardData.actionCard = cardDatabase.cardList[randomCard];
+            actionCards.Add(cardDatabase.cardList[randomCard]);
 
             if (!opponentHand)
             {
@@ -69,6 +72,7 @@ public class PlayerDeck : MonoBehaviour
             GameObject newCard = Instantiate(cardPrefab, deckPanel);
             DisplayCard cardData = newCard.GetComponent<DisplayCard>();
             cardData.actionCard = cardDatabase.cardList[randomCard];
+            actionCards.Add(cardDatabase.cardList[randomCard]);
 
             if (!opponentHand)
             {
@@ -83,6 +87,7 @@ public class PlayerDeck : MonoBehaviour
             GameObject newCard = Instantiate(cardPrefab, deckPanel);
             DisplayCard cardData = newCard.GetComponent<DisplayCard>();
             cardData.actionCard = cardDatabase.cardList[6];
+            actionCards.Add(cardDatabase.cardList[6]);
 
             if (!opponentHand)
             {

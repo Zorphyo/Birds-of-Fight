@@ -239,9 +239,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c2620000
-      m_LastClickedID: 25282
-      m_ExpandedIDs: 16fbffff64620000
+      m_SelectedIDs: 6a640000
+      m_LastClickedID: 0
+      m_ExpandedIDs: e6a2ffff8ca5ffff20a7ffff68a7ffffcaabffffcaf9ffff16fbffff92640000ce790000427a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -662,9 +662,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1091.6495, y: 597.7559, z: 6.0821586}
+    m_Target: {x: 1070.5421, y: 593.81335, z: 5.5190887}
     speed: 2
-    m_Value: {x: 1091.6495, y: 597.7559, z: 6.0821586}
+    m_Value: {x: 1070.5421, y: 593.81335, z: 5.5190887}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -714,9 +714,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 605.6163
+    m_Target: 661.924
     speed: 2
-    m_Value: 605.6163
+    m_Value: 661.924
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -885,7 +885,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -893,16 +893,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sprites
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Ryan\Desktop\Birds-of-Fight\Birds of Fight
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a8630000
-    m_LastClickedID: 25512
-    m_ExpandedIDs: 000000008c63000000ca9a3bffffff7f
+    m_SelectedIDs: 30640000
+    m_LastClickedID: 25648
+    m_ExpandedIDs: 000000001e64000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -930,7 +930,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c630000
+    m_ExpandedIDs: 000000001e64000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -955,10 +955,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c2620000
-    m_LastClickedInstanceID: 25282
+    m_SelectedInstanceIDs: 6a640000
+    m_LastClickedInstanceID: 25706
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300001e6e0000ae650000266e000006690000247400002a740000a8b00000046600000a660000026600008e8e00006c660000726600008a710000fa720000ae6600006c6100004e680000427800002a6600008e6500001a640000ba6c0000fc6d0000206a0000e8690000e46c00004e6a00006a6a0000586a0000826a00009e6a00008c6a00009a6a0000926a0000547b00005a790000687900001a7100002eb000005cd10000308100004081000090720000b27700006a7400007a74000000000000ec630000
+    m_ExpandedInstanceIDs: c62300001e6e0000ae650000266e000006690000247400002a740000a8b00000046600000a660000026600008e8e00006c660000726600008a710000fa720000ae6600006c6100004e680000427800002a6600008e6500001a640000ba6c0000fc6d0000206a0000e8690000e46c00004e6a00006a6a0000586a0000826a00009e6a00008c6a00009a6a0000547b00005a790000687900001a7100002eb000005cd10000308100004081000090720000b27700006a7400007a74000000000000ec630000ae630000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1120,7 +1120,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 27414
+  m_LastSelectedObjectID: 25854
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1140,8 +1140,8 @@ MonoBehaviour:
     y: 0
     width: 520.6666
     height: 1307.3334
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
