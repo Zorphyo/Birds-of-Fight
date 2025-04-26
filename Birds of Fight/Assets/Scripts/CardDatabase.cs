@@ -7,4 +7,7 @@ public class CardDatabase : MonoBehaviour
 {
     [SerializeField]
     public List<ActionCard> cardList = new List<ActionCard>();
+
+    [SerializeField]
+    public List<CharacterCard> characterList = new List<CharacterCard>();
 }

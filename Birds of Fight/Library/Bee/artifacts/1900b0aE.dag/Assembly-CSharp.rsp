@@ -380,6 +380,7 @@
 "Assets/Scripts/ActionCard.cs"
 "Assets/Scripts/CardDatabase.cs"
 "Assets/Scripts/CharacterCard.cs"
+"Assets/Scripts/CharacterSelect.cs"
 "Assets/Scripts/CursorControl.cs"
 "Assets/Scripts/DisplayCard.cs"
 "Assets/Scripts/DragCard.cs"

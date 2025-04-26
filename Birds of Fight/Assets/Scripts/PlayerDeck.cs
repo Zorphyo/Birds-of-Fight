@@ -19,27 +19,15 @@ public class PlayerDeck : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        CharacterCard playerCharacter = gameManager.playerCharacter;
-        CharacterCard opponentCharacter = gameManager.opponentCharacter;
 
         cardDatabase = FindObjectOfType<CardDatabase>();
+    }
 
+    public IEnumerator DrawCards(int attackCount, int evadeCount, int throwCount, int specialCount) //draws five cards of each attack type randomly, and flips the cards over if they are opponent cards
+    {
         cursorControl = FindObjectOfType<CursorControl>();
         cursorControl.LockCursor(); //Lock mouse input until all cards are drawn
 
-        if (opponentHand)
-        {
-            StartCoroutine(DrawCards(opponentCharacter.attackCardCount, opponentCharacter.throwCardCount, opponentCharacter.evadeCardCount, opponentCharacter.specialCardCount));
-        }
-
-        else
-        {
-            StartCoroutine(DrawCards(playerCharacter.attackCardCount, playerCharacter.throwCardCount, playerCharacter.evadeCardCount, playerCharacter.specialCardCount));
-        }
-    }
-
-    IEnumerator DrawCards(int attackCount, int throwCount, int evadeCount, int specialCount) //draws five cards of each attack type randomly, and flips the cards over if they are opponent cards
-    {
         for (int i = 0; i < attackCount; i ++) //Attack Cards
         {
             randomCard = Random.Range(0,3);
@@ -56,7 +44,7 @@ public class PlayerDeck : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < throwCount; i++) //Throw Cards
+        for (int i = 0; i < evadeCount; i++) //Evade Cards
         {
             randomCard = Random.Range(3,6);
 
@@ -72,7 +60,7 @@ public class PlayerDeck : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < evadeCount; i++) //Evade cards
+        for (int i = 0; i < throwCount; i++) //Throw Cards
         {
             randomCard = Random.Range(7,10);
 
@@ -106,5 +94,18 @@ public class PlayerDeck : MonoBehaviour
 
         gameManager.instructionsText.SetText("Select Your Card");
         cursorControl.UnlockCursor(); //After cards have been drawn, the player can play the game
+    }
+
+    public void StartGame()
+    {
+        if (opponentHand)
+        {
+            StartCoroutine(DrawCards(gameManager.opponentCharacter.attackCardCount, gameManager.opponentCharacter.evadeCardCount, gameManager.opponentCharacter.throwCardCount, gameManager.opponentCharacter.specialCardCount));
+        }
+
+        else 
+        {
+            StartCoroutine(DrawCards(gameManager.playerCharacter.attackCardCount, gameManager.playerCharacter.evadeCardCount, gameManager.playerCharacter.throwCardCount, gameManager.playerCharacter.specialCardCount));
+        }
     }
 }
