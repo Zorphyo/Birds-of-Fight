@@ -718,7 +718,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Throw Wing
+  m_Text: Evade Wing
 --- !u!222 &325355333
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2262,7 +2262,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Evade Talon
+  m_Text: Throw Talon
 --- !u!222 &1618375110
 CanvasRenderer:
   m_ObjectHideFlags: 0
