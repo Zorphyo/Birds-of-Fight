@@ -29,7 +29,7 @@ public class PlayerDeck : MonoBehaviour
         cursorControl = FindObjectOfType<CursorControl>();
         cursorControl.LockCursor(); //Lock mouse input until all cards are drawn
 
-        for (int i = 0; i < attackCount; i ++) //Attack Cards
+        for (int i = 0; i < attackCount; i++) //Attack Cards
         {
             randomCard = Random.Range(0,3);
 

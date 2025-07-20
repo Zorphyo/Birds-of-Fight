@@ -38,9 +38,79 @@ public class CharacterSelect : MonoBehaviour
                
     }
 
-    public void RavenSelect()
+    public void FinchSelect()
     {
         gameManager.playerCharacter = cardDatabase.characterList[1];
+        RandomOpponent();
+
+        playerCharacterCard.sprite = gameManager.playerCharacter.cardImage;
+        opponentCharacterCard.sprite = gameManager.opponentCharacter.cardImage;
+
+        PlayerDeck playerDeck = playerHand.GetComponent<PlayerDeck>();
+        PlayerDeck opponentDeck = opponentHand.GetComponent<PlayerDeck>();
+
+        playerDeck.StartGame();
+        opponentDeck.StartGame();
+
+        gameObject.SetActive(false);
+               
+    }
+
+    public void OstrichSelect()
+    {
+        gameManager.playerCharacter = cardDatabase.characterList[2];
+        RandomOpponent();
+
+        playerCharacterCard.sprite = gameManager.playerCharacter.cardImage;
+        opponentCharacterCard.sprite = gameManager.opponentCharacter.cardImage;
+
+        PlayerDeck playerDeck = playerHand.GetComponent<PlayerDeck>();
+        PlayerDeck opponentDeck = opponentHand.GetComponent<PlayerDeck>();
+
+        playerDeck.StartGame();
+        opponentDeck.StartGame();
+
+        gameObject.SetActive(false);
+               
+    }
+
+    public void RavenSelect()
+    {
+        gameManager.playerCharacter = cardDatabase.characterList[3];
+        RandomOpponent();
+
+        playerCharacterCard.sprite = gameManager.playerCharacter.cardImage;
+        opponentCharacterCard.sprite = gameManager.opponentCharacter.cardImage;
+
+        PlayerDeck playerDeck = playerHand.GetComponent<PlayerDeck>();
+        PlayerDeck opponentDeck = opponentHand.GetComponent<PlayerDeck>();
+
+        playerDeck.StartGame();
+        opponentDeck.StartGame();
+
+        gameObject.SetActive(false);
+    }
+
+    public void SwanSelect()
+    {
+        gameManager.playerCharacter = cardDatabase.characterList[4];
+        RandomOpponent();
+
+        playerCharacterCard.sprite = gameManager.playerCharacter.cardImage;
+        opponentCharacterCard.sprite = gameManager.opponentCharacter.cardImage;
+
+        PlayerDeck playerDeck = playerHand.GetComponent<PlayerDeck>();
+        PlayerDeck opponentDeck = opponentHand.GetComponent<PlayerDeck>();
+
+        playerDeck.StartGame();
+        opponentDeck.StartGame();
+
+        gameObject.SetActive(false);
+    }
+
+    public void VultureSelect()
+    {
+        gameManager.playerCharacter = cardDatabase.characterList[5];
         RandomOpponent();
 
         playerCharacterCard.sprite = gameManager.playerCharacter.cardImage;

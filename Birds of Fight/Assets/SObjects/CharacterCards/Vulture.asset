@@ -16,5 +16,5 @@ MonoBehaviour:
   throwCardCount: 2
   evadeCardCount: 9
   specialCardCount: 2
-  specialCardProperties: {fileID: 0}
-  cardImage: {fileID: 0}
+  specialCardProperties: {fileID: 11400000, guid: b7c923919f7c08a47bcc4946bb162262, type: 2}
+  cardImage: {fileID: 21300000, guid: 58f312ef864bb0048a94d0ed003a8c06, type: 3}
