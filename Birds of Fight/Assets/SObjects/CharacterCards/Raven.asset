@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79033e6ca9b398c408908574af419f42, type: 3}
   m_Name: Raven
   m_EditorClassIdentifier: 
-  attackCardCount: 3
-  throwCardCount: 8
+  attackCardCount: 5
+  throwCardCount: 9
   evadeCardCount: 4
-  specialCardCount: 1
+  specialCardCount: 2
   specialCardProperties: {fileID: 11400000, guid: 7b7a47e95695a5448ab011a19ffc1db2, type: 2}
   cardImage: {fileID: 21300000, guid: 5952d2ce2a5155b409ded4e43392f69c, type: 3}
